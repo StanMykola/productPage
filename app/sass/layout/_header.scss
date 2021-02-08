@@ -1,0 +1,225 @@
+.header-container {
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 135px 0 135px;
+    min-height: 112px;
+    align-items: center;
+    background-color: $background-color;
+
+    &__logo {
+        min-width: fit-content;
+        font-size: 24px;
+        margin-right: 25px;
+
+        a {
+            text-decoration: none;
+            color: $def-black;
+        }
+    }
+
+    &__burger {
+        display: none;
+    }
+
+    &__menu {
+        width: 100%;
+        text-align: end;
+    }
+}
+
+.menu-nav {
+    &__link {
+        font-family: $font-first-bold;
+        text-decoration: none; 
+        text-transform: uppercase;
+        color: $def-black;   
+        font-size: 13px;
+
+        &:not(:last-child) {
+            margin-right: 60px;
+        }
+        &:last-child {
+            margin-right: 115px;
+        }
+
+        &:hover, &:active {
+            color: $color-main;
+            transition: 0.15s;
+        }
+    }
+}
+
+.search {
+    outline: 1px solid $border-color;
+    padding: 0 4px 0 4px;
+
+    &-input {
+        border: none;
+        overflow: hidden;
+        background: transparent;
+
+        &:active {
+            border: none;
+        }
+
+        &:focus {
+            outline:none;
+        }
+
+        &::-webkit-input-placeholder {
+            font-family: $font-first-light;
+            font-size: 13px;
+        }
+    }
+    
+    &-button {
+        color:$text-gray-second;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+            
+        &:focus {
+            outline:none;
+        }
+    }
+
+    #searchform {
+        display: flex;
+        min-height: 30px;
+    }
+}
+
+@media (max-width: 1550px) {
+    .menu-nav {
+
+        &__link {
+
+            &:not(:last-child){
+                margin-right: 30px;
+            }
+            &:last-child{
+                margin-right: 30px;
+            }
+        }
+    }
+}
+
+@media (max-width: 1280px) {
+
+
+    .header-container__burger {
+        display: block;
+        position: relative;
+        margin-left:25px;
+        width: 30px;
+        height: 20px;
+        order:3;
+
+        &:before, &:after {
+            content: '';
+            background-color: $def-black;
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            left: 0;
+            transition: 0.3s;
+        }
+
+        &:before {
+            top:0;
+        }
+
+        &:after {
+            bottom: 0;
+        }
+
+        span {
+            position: absolute;
+            background-color: $def-black;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            top:8px;
+            transition: 0.3s;
+        }
+        
+        &.active:before {
+            transform: rotate(45deg);
+            top: 7px;
+        }
+
+        &.active:after {
+            transform: rotate(-45deg);
+            bottom: 9px;
+
+        }
+
+        &.active span {
+            transform: scale(0);
+        }
+
+    }
+
+    .header-container__menu {
+
+        position: fixed;
+        top: 112px;
+        left: -100%;
+        width: 100%;
+        padding: 0 0 0 70px;
+        text-align: left;
+        height: fit-content;
+        background-color: $def-white;
+        transition: 0.3s;
+
+        &.active {
+            left:0;
+        }
+    }
+
+    .menu-nav {
+
+        &__link {
+            display: block;
+            padding: 20px 0 20px 0;
+        }
+    }
+
+    .header-container__search {
+        flex-basis: 50%;
+    }
+    .search-input {
+        flex-basis: 95%;
+    }
+    .header-container {
+        flex: 0 1 33.33%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 0 70px 0 70px;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .header-container {
+        padding: 0 40px 0 40px;
+    }
+    .header-container__logo {
+        flex-basis: 100%;
+        text-align: center;
+        margin: 0 auto;
+    }
+    .header-container__search {
+        flex-basis: 80%;
+    }
+}
+
+@media (max-width: 375px) {
+    
+    .header-container {
+        padding: 0 20px 0 20px;
+    }
+}
+
